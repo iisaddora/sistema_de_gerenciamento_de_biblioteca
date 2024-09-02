@@ -1,0 +1,67 @@
+O projeto consiste em desenvolver um sistema básico de gerenciamento para uma biblioteca. O sistema deve permitir o registro de autores, livros e empréstimos de livros. A estrutura do banco de dados é implementada usando MySQL e inclui três tabelas principais: Autores, Livros e Emprestimos.
+
+Tabelas:
+
+Autores
+
+AutorID: Identificador único do autor (chave primária).
+Nome: Nome completo do autor.
+Nacionalidade: Nacionalidade do autor.
+Livros
+
+LivroID: Identificador único do livro (chave primária).
+Titulo: Título do livro.
+AutorID: Identificador do autor do livro (chave estrangeira referenciando Autores).
+AnoPublicacao: Ano de publicação do livro.
+Genero: Gênero do livro.
+Emprestimos
+
+EmprestimoID: Identificador único do empréstimo (chave primária).
+LivroID: Identificador do livro emprestado (chave estrangeira referenciando Livros).
+DataEmprestimo: Data em que o livro foi emprestado.
+DataDevolucao: Data em que o livro foi devolvido (pode ser NULL se ainda não foi devolvido).
+NomeUsuario: Nome do usuário que emprestou o livro.
+Objetivo: Implementar um banco de dados funcional que possa ser integrado a uma aplicação de gerenciamento de biblioteca para acompanhar o empréstimo de livros e a informação sobre os autores e livros disponíveis.
+# Sistema de Gerenciamento de Biblioteca
+
+Este projeto é um sistema de gerenciamento para bibliotecas, implementado em MySQL. O banco de dados gerencia informações sobre autores, livros e empréstimos.
+
+## Estrutura do Banco de Dados
+
+O banco de dados `Biblioteca` contém três tabelas:
+
+1. **Autores**: Armazena informações sobre os autores.
+2. **Livros**: Armazena informações sobre os livros e está relacionado aos autores.
+3. **Emprestimos**: Armazena registros de empréstimos de livros.
+
+### Tabelas
+
+#### Autores
+
+- `AutorID` (INT, AUTO_INCREMENT, PRIMARY KEY): Identificador único do autor.
+- `Nome` (VARCHAR(100)): Nome do autor.
+- `Nacionalidade` (VARCHAR(100)): Nacionalidade do autor.
+
+#### Livros
+
+- `LivroID` (INT, AUTO_INCREMENT, PRIMARY KEY): Identificador único do livro.
+- `Titulo` (VARCHAR(100)): Título do livro.
+- `AutorID` (INT): Identificador do autor (chave estrangeira).
+- `AnoPublicacao` (YEAR): Ano de publicação do livro.
+- `Genero` (VARCHAR(100)): Gênero do livro.
+
+#### Emprestimos
+
+- `EmprestimoID` (INT, AUTO_INCREMENT, PRIMARY KEY): Identificador único do empréstimo.
+- `LivroID` (INT): Identificador do livro emprestado (chave estrangeira).
+- `DataEmprestimo` (DATE): Data de empréstimo do livro.
+- `DataDevolucao` (DATE): Data de devolução do livro.
+- `NomeUsuario` (VARCHAR(100)): Nome do usuário que emprestou o livro.
+
+### Configuração
+
+1. Clone o repositório.
+2. Importe o arquivo SQL no seu ambiente MySQL.
+
+```bash
+mysql -u <usuario> -p < <script.sql>
